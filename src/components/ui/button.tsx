@@ -8,7 +8,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-slate-900 text-white shadow hover:bg-slate-800 cursor-pointer",
+          "bg-royal-blue text-white shadow hover:bg-royal-blue-dark cursor-pointer",
         emerald:
           "bg-royal-blue text-white shadow hover:bg-royal-blue-dark cursor-pointer",
         outline:

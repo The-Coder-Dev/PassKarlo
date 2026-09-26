@@ -4,12 +4,13 @@ import { Footer } from "@/components/navigation/Footer";
 import { Hero } from "@/components/home/Hero";
 import { SearchBar } from "@/components/home/SearchBar";
 import { ScholarshipCard, sampleScholarships } from "@/components/home/ScholarshipCard";
+import { FeaturesGrid } from "@/components/home/FeaturesGrid";
 import { CareerCard, sampleCareerCategories } from "@/components/career/CareerCard";
 import { InstituteCard, sampleInstitutes } from "@/components/institute/InstituteCard";
 import { AddInstituteModal, AddInstituteButton } from "@/components/modals/AddInstituteModal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Compass, ArrowRight, Building2 } from "lucide-react";
+import { GraduationCap, Compass, ArrowRight, Building2, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
 
         {/* 3. Four Main Homepage Feature Cards (Server Component) */}
         <section id="scholarships" className="w-full pt-10 pb-12">
-          <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {sampleScholarships.map((item) => (
                 <ScholarshipCard key={item.id} item={item} />
@@ -31,15 +32,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. Popular Disciplines & Career Guidance (Server Component) */}
+        {/* 4. Key Platform Benefits Grid (Server Component) */}
+        <section id="features" className="w-full py-8">
+          <div className="w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
+            <FeaturesGrid />
+          </div>
+        </section>
+
+        {/* 5. Popular Disciplines & Career Guidance (Server Component) */}
         <section id="careers" className="w-full py-12">
-          <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl bg-white p-8 sm:p-12 border border-slate-200/80 shadow-xs">
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Badge variant="secondary" className="text-xs uppercase font-extrabold tracking-wider">
-                      <Compass className="h-3.5 w-3.5 mr-1 inline text-[#003096]" /> Career Guidance
+                      <Compass className="h-3.5 w-3.5 mr-1 inline text-royal-blue" /> Career Guidance
                     </Badge>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-[#002D80] tracking-tight">
@@ -49,7 +57,7 @@ export default function Home() {
                     Find the right academic stream based on your interests, salary prospects, and career goals.
                   </p>
                 </div>
-                <Button variant="ghost" className="font-bold text-[#003096] hover:text-[#001F5C] gap-1 self-start md:self-auto">
+                <Button variant="ghost" className="font-bold text-royal-blue hover:text-[#001F5C] gap-1 self-start md:self-auto">
                   Explore All Disciplines &rarr;
                 </Button>
               </div>
@@ -63,41 +71,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Top Regional Institutes (Server Component) */}
-        <section id="institutes" className="w-full py-12">
-          <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="emerald" className="text-xs uppercase font-extrabold tracking-wider">
-                    <GraduationCap className="h-3.5 w-3.5 mr-1 inline" /> Verified Listings
-                  </Badge>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#002D80] tracking-tight">
-                  Top Institutes in Your Region
-                </h2>
-                <p className="text-sm text-slate-500 mt-1 max-w-xl">
-                  Explore NAAC A+ accredited universities, engineering colleges, and technical degree institutions.
-                </p>
-              </div>
-              <Button variant="outline" size="sm" className="font-semibold self-start md:self-auto gap-1 border-slate-300">
-                Browse All Institutes
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {sampleInstitutes.map((inst) => (
-                <InstituteCard key={inst.id} institute={inst} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 6. Institutional Onboarding Callout Banner (Server Component with Client Trigger) */}
+        {/* 7. Institutional Onboarding Callout Banner (Server Component with Client Trigger) */}
         <section className="w-full py-12">
-          <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl bg-[#003096] text-white p-8 sm:p-12 relative overflow-hidden shadow-xl border border-[#002275]">
+          <div className="w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl bg-royal-blue text-white p-8 sm:p-12 relative overflow-hidden shadow-xl border border-[#002275]">
               <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="space-y-3 max-w-2xl text-center lg:text-left">
                   <Badge variant="secondary" className="text-xs font-bold px-3 py-1 bg-blue-900/60 text-blue-200 border-0">
@@ -112,7 +89,7 @@ export default function Home() {
                 </div>
                 <div className="shrink-0">
                   <AddInstituteButton
-                    className="bg-white text-[#003096] hover:bg-slate-100 font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all"
+                    className="bg-white text-royal-blue hover:bg-slate-100 font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all"
                   >
                     Learn How to Add Institute
                     <ArrowRight className="h-4 w-4 ml-1 inline" />

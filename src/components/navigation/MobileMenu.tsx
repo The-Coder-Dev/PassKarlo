@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { openAddInstituteModal } from "@/components/modals/AddInstituteModal";
 
@@ -25,11 +26,11 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
 
   return (
     <>
-      <div className="flex md:hidden items-center gap-3">
+      <div className="flex lg:hidden items-center gap-3">
         <button
           type="button"
           onClick={handleOpenAddInstitute}
-          className="text-xs font-bold text-[#003096]"
+          className="text-xs font-bold text-royal-blue hover:underline"
         >
           Add Institute
         </button>
@@ -43,34 +44,44 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
         </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white mt-2 rounded-2xl border border-slate-100 p-4 space-y-3 shadow-lg animate-in slide-in-from-top-2">
-          <div className="flex flex-col space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="lg:hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white rounded-2xl border border-slate-100/90 p-4 space-y-3 shadow-xl z-50"
+          >
+            <div className="flex flex-col space-y-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-royal-blue rounded-xl transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+            <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-2">
+              <Link
+                href="https://books.passkarlo.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#003096] rounded-xl transition-colors"
               >
-                {item.label}
-              </a>
-            ))}
-          </div>
-          <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
-            <Link
-              href="https://books.passkarlo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full"
-            >
-              <Button className="w-full bg-[#003096] hover:bg-[#002266] text-white font-bold rounded-xl py-3 justify-center">
-                Donate Book
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
+                <Button className="w-full bg-royal-blue hover:bg-royal-blue-dark text-white font-bold rounded-xl py-3 justify-center shadow-xs">
+                  Donate Book
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
+
