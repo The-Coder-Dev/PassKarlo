@@ -1,16 +1,13 @@
-import React from "react";
-import { Header } from "@/components/navigation/Header";
-import { Footer } from "@/components/navigation/Footer";
+
 import { Hero } from "@/components/home/Hero";
 import { SearchBar } from "@/components/home/SearchBar";
 import { ScholarshipCard, sampleScholarships } from "@/components/home/ScholarshipCard";
 import { FeaturesGrid } from "@/components/home/FeaturesGrid";
 import { CareerCard, sampleCareerCategories } from "@/components/career/CareerCard";
-import { InstituteCard, sampleInstitutes } from "@/components/institute/InstituteCard";
 import { AddInstituteModal, AddInstituteButton } from "@/components/modals/AddInstituteModal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Compass, ArrowRight, Building2, Sparkles } from "lucide-react";
+import { Compass, ArrowRight, Building2 } from "lucide-react";
 
 export default function Home() {
   return (
@@ -51,14 +48,14 @@ export default function Home() {
                     </Badge>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-[#002D80] tracking-tight">
-                    Explore Popular Disciplines
+                    Explore Popular Career
                   </h2>
                   <p className="text-sm text-slate-500 mt-1 max-w-xl">
                     Find the right academic stream based on your interests, salary prospects, and career goals.
                   </p>
                 </div>
                 <Button variant="ghost" className="font-bold text-royal-blue hover:text-[#001F5C] gap-1 self-start md:self-auto">
-                  Explore All Disciplines &rarr;
+                  Explore All Career &rarr;
                 </Button>
               </div>
 
