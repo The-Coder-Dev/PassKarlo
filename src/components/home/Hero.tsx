@@ -8,7 +8,7 @@ export function Hero() {
       <div className="w-full  mx-auto px-4 sm:px-6 lg:px-5">
         
         {/* Main Hero Container - Figma Deep Royal Blue Theme */}
-        <div className="rounded-3xl bg-[#003096] text-white overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12 min-h-[420px] lg:min-h-[460px]">
+        <div className="rounded-3xl bg-linear-to-l from-royal-blue to-royal-blue-dark text-white overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12 min-h-105 lg:min-h-120">
           
           {/* Left Content Column */}
           <div className="lg:col-span-6 p-8 sm:p-12 lg:p-14 space-y-6 flex flex-col justify-center z-10">
@@ -33,7 +33,7 @@ export function Hero() {
             {/* CTA Button */}
             <div className="pt-2">
               <Button
-                className="bg-white text-[#003096] hover:bg-slate-100 font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg shadow-sm transition-all"
+                className="bg-white text-royal-blue hover:bg-slate-100 font-bold text-xs sm:text-sm px-6 py-2.5 rounded-lg shadow-sm transition-all"
               >
                 Explore GK Details
               </Button>
@@ -42,16 +42,15 @@ export function Hero() {
           </div>
 
           {/* Right Educational Classroom Image Column */}
-          <div className="lg:col-span-6 relative w-full h-72 lg:h-full min-h-[300px] lg:min-h-[460px] overflow-hidden">
+          <div className="lg:col-span-6 relative w-full h-72 lg:h-full min-h-75 lg:min-h-115 overflow-hidden">
             <Image
               src="/hero_classroom.jpg"
               alt="PassKarlo Classroom Students"
               fill
               priority
               className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            {/* Subtle Gradient Blend */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#003096] via-transparent to-transparent lg:w-32 hidden lg:block" />
             
             {/* PassKarlo Logo Overlay on Whiteboard matching Figma */}
             <div className="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-xs p-2 px-3 rounded-xl shadow-md border border-white/40">
