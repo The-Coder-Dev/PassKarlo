@@ -1,4 +1,3 @@
-
 import { Hero } from "@/components/home/Hero";
 import { SearchBar } from "@/components/home/SearchBar";
 import { ScholarshipCard, sampleScholarships } from "@/components/home/ScholarshipCard";

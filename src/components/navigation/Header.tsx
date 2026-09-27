@@ -15,7 +15,7 @@ export function Header() {
   ];
 
   return (
-    <header className="w-full pt-4 pb-2">
+    <header className="w-full pt-4 pb-2 z-1">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-5">
 
         <div className="w-full bg-white rounded-lg sm:rounded-xl shadow-2xs border border-slate-100/80 px-4 sm:px-5 py-3.5 flex items-center justify-between relative">
