@@ -1,17 +1,22 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { AddInstituteLink } from "@/components/modals/AddInstituteModal";
 import { MobileMenu } from "@/components/navigation/MobileMenu";
+import { HeaderNav, type NavItem } from "@/components/navigation/HeaderNav";
 
 export function Header() {
-  const navItems = [
-    { label: "Home", href: "#" },
-    { label: "Exam Preparation", href: "#exam-prep" },
-    { label: "Entrance Exam", href: "#entrance-exam" },
-    { label: "Career Options", href: "#careers" },
-    { label: "Contact", href: "#contact" },
+  const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
+    { label: "Entrance Exams", href: "/#entrance-exam" },
+    { label: "Career Options", href: "/#careers" },
+    {
+      label: "Find Institute",
+      children: [
+        { label: "Find College", href: "/colleges" },
+        { label: "Find School", href: "/schools" },
+      ],
+    },
   ];
 
   return (
@@ -34,21 +39,11 @@ export function Header() {
 
           <div className="flex items-center justify-center gap-4">
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm font-semibold text-slate-700 hover:text-royal-blue transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            <HeaderNav items={navItems} />
 
             {/* Desktop CTA Action Buttons */}
             <div className="hidden md:flex items-center gap-2">
-              <AddInstituteLink className={buttonVariants({ variant: "outline" })}>
+              <AddInstituteLink className={buttonVariants({ variant: "default" })}>
                 Add Your Institute
               </AddInstituteLink>
               <Link
@@ -56,9 +51,6 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className={buttonVariants({ variant: "secondary" })}>
-                  Donate Book
-                </Button>
               </Link>
             </div>
           </div>

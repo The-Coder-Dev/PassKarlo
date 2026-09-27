@@ -190,6 +190,25 @@ The exact route structure should follow the existing project design and document
 
 ---
 
+# 6.1 Public Content Discovery Architecture
+
+PassKarlo is fundamentally a **discovery and search platform**, rather than a traditional profile-directory website.
+
+### Discovery-First Principles:
+* **No Individual Profile Pages**: V1 does not have dedicated public detail/profile pages for individual Institutes or Teachers (`/schools/[slug]`, `/colleges/[slug]`, `/institutes/[slug]`, `/teachers/[slug]`).
+* **Listing Pages as Destinations**: Institutes are discovered and viewed directly on their respective listing pages (`/schools`, `/colleges`). Teachers are discovered directly on `/teachers`.
+* **Primary Navigation Entry**: "Find School/College" is the primary public navigation entry for institute discovery rather than exposing Schools and Colleges as separate primary navigation items.
+* **External Admission Links**: PassKarlo does not host or process Institute admission applications in V1. The Admission Form action links directly to the external admission form URL provided by the Institute.
+* **Concise In-Card Information**: Cards on listing pages display rich, concise information (Logo, Name, Type, Location, Affiliation, Established Year, Facilities, Contact/Website) and primary action buttons (`Admission Form`, `View Website`, `Contact Teacher`) directly within the listing experience.
+* **Role of Sanity Slugs**: Sanity document slugs exist for internal CMS identification, canonical reference, and potential future routing. However, slugs MUST NOT automatically result in dynamic `[slug]` public routes in V1.
+* **Control Flow**:
+  ```text
+  User → Find School/College (/schools or /colleges) → Sanity GROQ Query → Discovery Cards → External Action (Institute Admission Form URL / Website URL)
+  ```
+
+
+---
+
 # 7. Search
 
 Search is one of PassKarlo's primary features.

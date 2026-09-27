@@ -47,7 +47,7 @@ export default function Home() {
                     </Badge>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-[#002D80] tracking-tight">
-                    Explore Popular Career
+                  e  Explore Popular Carer
                   </h2>
                   <p className="text-sm text-slate-500 mt-1 max-w-xl">
                     Find the right academic stream based on your interests, salary prospects, and career goals.

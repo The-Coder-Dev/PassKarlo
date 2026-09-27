@@ -2,15 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { openAddInstituteModal } from "@/components/modals/AddInstituteModal";
-
-interface NavItem {
-  label: string;
-  href: string;
-}
+import type { NavItem } from "@/components/navigation/HeaderNav";
 
 interface MobileMenuProps {
   navItems: NavItem[];
@@ -18,6 +14,16 @@ interface MobileMenuProps {
 
 export function MobileMenu({ navItems }: MobileMenuProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({
+    "Find Institute": true,
+  });
+
+  const toggleExpand = (label: string) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  };
 
   const handleOpenAddInstitute = () => {
     setMobileMenuOpen(false);
@@ -30,14 +36,14 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
         <button
           type="button"
           onClick={handleOpenAddInstitute}
-          className="text-xs font-bold text-royal-blue hover:underline"
+          className="text-xs font-bold text-royal-blue hover:underline cursor-pointer"
         >
           Add Institute
         </button>
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none"
+          className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -54,17 +60,62 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
             className="lg:hidden absolute top-[calc(100%+8px)] left-0 right-0 bg-white rounded-2xl border border-slate-100/90 p-4 space-y-3 shadow-xl z-50"
           >
             <div className="flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-royal-blue rounded-xl transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                if (item.children && item.children.length > 0) {
+                  const isExpanded = !!expandedItems[item.label];
+                  return (
+                    <div key={item.label} className="space-y-1">
+                      <button
+                        type="button"
+                        onClick={() => toggleExpand(item.label)}
+                        className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-royal-blue rounded-xl transition-colors text-left"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          className={`h-4 w-4 text-slate-400 transition-transform duration-200 ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="pl-4 space-y-1 overflow-hidden"
+                          >
+                            {item.children.map((child) => (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="block px-4 py-2 text-xs font-bold text-slate-700 hover:text-royal-blue hover:bg-slate-50 rounded-lg transition-colors"
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href || "#"}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-royal-blue rounded-xl transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
             </div>
+
             <div className="pt-2.5 border-t border-slate-100 flex flex-col gap-2">
               <Link
                 href="https://books.passkarlo.com"
@@ -84,4 +135,3 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
     </>
   );
 }
-
