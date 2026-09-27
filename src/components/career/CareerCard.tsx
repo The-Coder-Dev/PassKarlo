@@ -7,7 +7,6 @@ import {
   Scale,
   Cpu,
   GraduationCap,
-  Sparkles,
   ChevronRight,
   LucideIcon
 } from "lucide-react";

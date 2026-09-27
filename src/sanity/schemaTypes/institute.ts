@@ -86,6 +86,7 @@ export const institute = defineType({
         defineField({ name: 'phone', title: 'Phone Number', type: 'string' }),
         defineField({ name: 'email', title: 'Email Address', type: 'string' }),
         defineField({ name: 'website', title: 'Official Website', type: 'url' }),
+        defineField({ name: 'admissionFormUrl', title: 'Official Admission Form URL', type: 'url' }),
       ],
     }),
     defineField({

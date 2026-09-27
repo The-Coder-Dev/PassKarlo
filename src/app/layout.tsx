@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "PassKarlo — Modern Education Discovery Platform",
+  title: "PassKarlo — Modern EducationPlatform",
   description: "Discover institutes, careers, courses, and teachers across India with PassKarlo.",
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, Mail, Phone, MapPin, Globe } from "lucide-react";
+import { Heart, MapPin, Globe } from "lucide-react";
 
 export function Footer() {
   return (
@@ -21,7 +21,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              India's premier education discovery platform. Discover leading institutes, explore rewarding career pathways, and connect with quality guidance.
+              India&apos;s premier education discovery platform. Discover leading institutes, explore rewarding career pathways, and connect with quality guidance.
             </p>
             <div className="flex items-center gap-3 pt-2 text-slate-400 text-xs">
               <span className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700">
