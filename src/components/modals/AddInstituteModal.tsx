@@ -87,7 +87,7 @@ export function AddInstituteModal() {
     {
       step: "01",
       title: "External Listing Payment",
-      desc: "Complete the institute listing fee payment through our official PassKarlo relationship manager or designated payment link.",
+      desc: "Complete the institute listing fee payment through our official PassK  arlo relationship manager or designated payment link.",
     },
     {
       step: "02",
