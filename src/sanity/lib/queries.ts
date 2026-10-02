@@ -1,5 +1,11 @@
 import { defineQuery } from 'next-sanity'
 
+export interface SanityFilterOptions {
+  cities?: (string | null)[]
+  states?: (string | null)[]
+  affiliations?: (string | null)[]
+}
+
 export interface SanityInstitute {
   _id: string
   name: string
@@ -199,5 +205,73 @@ export const TEACHERS_QUERY = defineQuery(
       email
     },
     availability
+  }`
+)
+
+export const GET_FILTER_OPTIONS_QUERY = defineQuery(
+  `{
+    "cities": array::unique(*[_type == "institute" && defined(location.city)].location.city),
+    "states": array::unique(*[_type == "institute" && defined(location.state)].location.state),
+    "affiliations": array::unique(*[_type == "institute" && defined(academicInfo.affiliation)].academicInfo.affiliation)
+  }`
+)
+
+export const SEARCH_INSTITUTES_QUERY = defineQuery(
+  `*[_type == "institute"
+    && ($instituteType == "" || type == $instituteType)
+    && ($city == "" || location.city == $city)
+    && ($state == "" || location.state == $state)
+    && ($affiliation == "" || academicInfo.affiliation == $affiliation)
+    && ($featured == false || isFeatured == true)
+    && ($searchTerm == "" || (
+      name match $searchTerm ||
+      location.city match $searchTerm ||
+      location.state match $searchTerm ||
+      location.pincode match $searchTerm ||
+      location.address match $searchTerm ||
+      shortDescription match $searchTerm ||
+      academicInfo.affiliation match $searchTerm ||
+      academicInfo.accreditation match $searchTerm ||
+      academicInfo.facilities[] match $searchTerm
+    ))
+  ] | order(
+    select(
+      $searchTerm != "" && name match $searchTerm => 0,
+      $searchTerm != "" && location.city match $searchTerm => 1,
+      2
+    ) asc,
+    isFeatured desc,
+    _createdAt desc
+  ) {
+    _id,
+    name,
+    slug,
+    type,
+    shortDescription,
+    logo,
+    location {
+      state,
+      city,
+      pincode,
+      address,
+      mapUrl
+    },
+    contact {
+      phone,
+      email,
+      website,
+      admissionFormUrl
+    },
+    "admissionFormUrl": coalesce(admissionFormUrl, contact.admissionFormUrl),
+    academicInfo {
+      affiliation,
+      establishedYear,
+      accreditation,
+      facilities,
+      admissionInfo
+    },
+    isFeatured,
+    featuredFrom,
+    featuredUntil
   }`
 )

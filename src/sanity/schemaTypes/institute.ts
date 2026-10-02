@@ -104,7 +104,7 @@ export const institute = defineType({
           of: [{ type: 'string' }],
           options: { layout: 'tags' },
         }),
-        defineField({ name: 'admissionInfo', title: 'Admission Process & Guidelines', type: 'text', rows: 4 }),
+        defineField({ name: 'admissionInfo', title: 'Admission Process & Guidelines', type: 'array', of: [defineArrayMember({ type: 'block' })] }),
       ],
     }),
     // Featured Listing Fields (Schools & Colleges ONLY)
