@@ -3,7 +3,7 @@ import { SearchBar } from "@/components/home/SearchBar";
 import { ScholarshipCard, sampleScholarships } from "@/components/home/ScholarshipCard";
 import { FeaturesGrid } from "@/components/home/FeaturesGrid";
 import { CareerCard, sampleCareerCategories } from "@/components/career/CareerCard";
-import { AddInstituteModal, AddInstituteButton } from "@/components/modals/AddInstituteModal";
+import { AddInstituteButton } from "@/components/modals/AddInstituteModal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Compass, ArrowRight, Building2 } from "lucide-react";
@@ -47,14 +47,14 @@ export default function Home() {
                     </Badge>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-[#002D80] tracking-tight">
-                  e  Explore Popular Carer
+                    Explore Popular Careers
                   </h2>
                   <p className="text-sm text-slate-500 mt-1 max-w-xl">
                     Find the right academic stream based on your interests, salary prospects, and career goals.
                   </p>
                 </div>
                 <Button variant="ghost" className="font-bold text-royal-blue hover:text-[#001F5C] gap-1 self-start md:self-auto">
-                  Explore All Career &rarr;
+                  Explore All Careers &rarr;
                 </Button>
               </div>
 
@@ -96,9 +96,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* 8. Add Your Institute Informational Modal (Client Component Boundary) */}
-      <AddInstituteModal />
 
     </div>
   );

@@ -1,5 +1,6 @@
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/navigation/Footer";
+import { AddInstituteModal } from "@/components/modals/AddInstituteModal";
 
 export default function PublicLayout({
   children,
@@ -11,6 +12,7 @@ export default function PublicLayout({
       <Header />
       {children}
       <Footer />
+      <AddInstituteModal />
     </>
   );
 }

@@ -13,7 +13,7 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/logo.webp"
+                src="/whitelogo.png"
                 alt="PassKarlo"
                 width={160}
                 height={44}

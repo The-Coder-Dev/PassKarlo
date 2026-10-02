@@ -118,36 +118,36 @@ export function AddInstituteModal() {
       title="Add Your Institute to PassKarlo"
       description="Learn how schools, colleges, coaching centers & universities get listed on India's trusted education discovery platform."
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         
         {/* Info Banner */}
-        <div className="rounded-2xl bg-emerald-50 border border-emerald-200/80 p-4 flex items-start gap-3">
-          <ShieldCheck className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+        <div className="rounded-xl bg-emerald-50 border border-emerald-200/80 p-3 flex items-start gap-3">
+          <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
           <div className="text-xs text-emerald-900 leading-relaxed font-medium">
-            <span className="font-bold block text-sm mb-0.5">Admin-Managed Listing Policy</span>
+            <span className="font-bold text-emerald-950 block text-xs mb-0.5">Admin-Managed Listing Policy</span>
             To maintain high data integrity, PassKarlo profiles are strictly curated by our team after external verification. No public unverified submissions are permitted.
           </div>
         </div>
 
         {/* Process Steps */}
-        <div className="space-y-3">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+        <div className="space-y-2">
+          <h3 className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
             Listing Onboarding Workflow
           </h3>
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {steps.map((s) => (
               <div
                 key={s.step}
-                className="flex items-start gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xs hover:border-slate-200 transition-all"
+                className="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100/60 transition-all"
               >
-                <div className="h-8 w-8 rounded-xl bg-slate-900 text-white text-xs font-bold flex items-center justify-center shrink-0">
+                <div className="h-6 w-6 rounded-lg bg-slate-900 text-white text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                   {s.step}
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <h4 className="text-xs font-bold text-slate-900">
                     {s.title}
                   </h4>
-                  <p className="text-xs text-slate-600 leading-normal">{s.desc}</p>
+                  <p className="text-xs text-slate-600 leading-snug">{s.desc}</p>
                 </div>
               </div>
             ))}
@@ -155,41 +155,29 @@ export function AddInstituteModal() {
         </div>
 
         {/* Contact Info Box */}
-        <div className="rounded-2xl bg-slate-900 text-white p-5 space-y-3 shadow-md">
+        <div className="rounded-xl bg-slate-900 text-white p-4 space-y-2 shadow-md">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+            <span className="text-[11px] font-extrabold text-emerald-400 uppercase tracking-wider">
               Get Started with Our Team
             </span>
-            <Badge variant="emerald" className="text-[10px]">
+            <Badge variant="emerald" className="text-[10px] px-2 py-0.5">
               Direct Assistance
             </Badge>
           </div>
           <p className="text-xs text-slate-300">
-            Have questions about listing fees, featured placement, or profile updates? Reach out to our institutional onboarding team directly:
+            Have questions about listing fees, placement, or profile updates? Contact our team:
           </p>
           <div className="flex flex-wrap items-center gap-4 text-xs font-semibold pt-1">
-            <div className="flex items-center gap-1.5 text-white">
-              <Mail className="h-4 w-4 text-emerald-400" />
+            <a href="mailto:institutes@passkarlo.com" className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors">
+              <Mail className="h-3.5 w-3.5 text-emerald-400" />
               <span>institutes@passkarlo.com</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-white">
-              <Phone className="h-4 w-4 text-emerald-400" />
+            </a>
+            <a href="tel:+9105657277527" className="flex items-center gap-1.5 text-white hover:text-emerald-300 transition-colors">
+              <Phone className="h-3.5 w-3.5 text-emerald-400" />
               <span>+91 (0565) PASS-KARLO</span>
-            </div>
+            </a>
           </div>
         </div>
-
-        {/* Action Button */}
-        <div className="pt-2 flex justify-end">
-          <button
-            type="button"
-            onClick={handleClose}
-            className={cn(buttonVariants({ variant: "emerald" }), "px-6 font-bold")}
-          >
-            Got It
-          </button>
-        </div>
-
       </div>
     </Dialog>
   );

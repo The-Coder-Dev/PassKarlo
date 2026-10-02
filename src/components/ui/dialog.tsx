@@ -43,7 +43,7 @@ export function Dialog({ isOpen, onClose, title, description, children }: Dialog
       {/* Modal Dialog Content */}
       <div
         className={cn(
-          "relative z-50 w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-200"
+          "relative z-50 w-full max-w-2xl max-h-[85vh] flex flex-col rounded-3xl bg-white p-5 sm:p-7 shadow-2xl border border-slate-100 animate-in zoom-in-95 duration-200 my-auto"
         )}
         role="dialog"
         aria-modal="true"
@@ -51,24 +51,26 @@ export function Dialog({ isOpen, onClose, title, description, children }: Dialog
       >
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400"
+          className="absolute right-4 top-4 sm:right-5 sm:top-5 rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400"
           aria-label="Close dialog"
         >
           <X className="h-5 w-5" />
         </button>
 
-        {title && (
-          <h2 id="dialog-title" className="text-2xl font-bold text-slate-900 tracking-tight pr-8">
-            {title}
-          </h2>
-        )}
-        {description && (
-          <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-            {description}
-          </p>
-        )}
+        <div className="shrink-0 pr-8">
+          {title && (
+            <h2 id="dialog-title" className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              {title}
+            </h2>
+          )}
+          {description && (
+            <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              {description}
+            </p>
+          )}
+        </div>
 
-        <div className="mt-6">{children}</div>
+        <div className="mt-4 sm:mt-5 overflow-y-auto pr-1 min-h-0 flex-1 space-y-4">{children}</div>
       </div>
     </div>
   );
